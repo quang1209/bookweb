@@ -16,10 +16,10 @@
     </div>
     <div class="w3-bar-block">
       <a href="" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-      <a href="/dashboard" class="w3-bar-item w3-button w3-padding "><i class="fa-solid fa-gauge"></i> Trang quản trị</a>
+      <a href="/admin/dashboard" class="w3-bar-item w3-button w3-padding "><i class="fa-solid fa-gauge"></i> Trang quản trị</a>
       <a href="/sach" class="w3-bar-item w3-button w3-padding"><i class="fa-regular fa-circle"></i> Quản lý sách</a>
       <a href="/nhaxb" class="w3-bar-item w3-button w3-padding"><i class="fa-regular fa-circle"></i> Quản lý Nhà xuất bản</a>
-      <a href="/theloai" class="w3-bar-item w3-button w3-padding"><i class="fa-regular fa-circle"></i> Quản lý Nhà xuất bản</a>
+      <a href="/theloai" class="w3-bar-item w3-button w3-padding"><i class="fa-regular fa-circle"></i> Quản lý thể loại</a>
       <a href="/dichvu" class="w3-bar-item w3-button w3-padding"><i class="fa-regular fa-circle"></i> Quản lý dịch vụ</a>
       <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i> Danh sách người dùng</a>
       <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa-solid fa-receipt"></i> Danh sách hóa đơn</a>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NhaxbController;
@@ -39,6 +40,9 @@ require __DIR__.'/auth.php';
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth:admin', 'verified'])->name('admin.dashboard');
+Route::middleware('auth:admin')->group(function(){
+    Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.des');
+});
 require __DIR__.'/adminauth.php';
 //nhaxb
 Route::get('/nhaxb',[NhaxbController::class,'index'])->name('nhaxb.index');
