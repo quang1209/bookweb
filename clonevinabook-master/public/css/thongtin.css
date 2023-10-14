@@ -1,0 +1,329 @@
+.img-auto {
+  display: flex;
+  flex-direction: column;
+  width: 260px;
+  align-items: flex-end;
+}
+.main-body {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.line-height-gray {
+  color: #66645c;
+  font-size: 15px;
+  line-height: 30px;
+  width: 100%;
+}
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.button-prices-containner a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-decoration: none;
+}
+
+.popup-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.middle-information {
+  display: flex;
+  flex-direction: column;
+}
+.font-size-14 {
+  font-size: 14px;
+}
+.sub-title {
+  width: 100%;
+  border-top: 1px dashed #c7c7c7;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  color: #000000;
+  line-height: 1.2;
+  text-align: left;
+  float: left;
+  margin-top: 15px;
+  padding-top: 15px;
+  margin-bottom: 10px;
+}
+#mid-information-book {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  line-height: 25px;
+}
+.gray-gray-text {
+  color: #66645c;
+  font-size: 13px;
+}
+.mainbox-title {
+  height: auto;
+  font-size: 24px;
+  font-family: "Roboto", sans-serif;
+  color: #404040;
+  line-height: 1.2;
+  text-align: left;
+  white-space: normal;
+  font-weight: 500;
+  border-bottom: none;
+}
+.product-info-right {
+  transform: translate(20px, -20px);
+  position: relative;
+  padding: 25px 15px;
+  float: right;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #dcdbdb;
+  border-radius: 3px;
+  background-color: #ffffff;
+  width: 250px;
+  min-height: 210px;
+  padding-bottom: 20px;
+  margin-right: 5px;
+  -webkit-box-shadow: 0 0 0 5px #e8e8e8;
+  -moz-box-shadow: 0 0 0 5px #e8e8e8;
+  box-shadow: 0 0 0 5px #e8e8e8;
+}
+.middle-information {
+  margin-top: 15px;
+}
+.title {
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  color: #000000;
+  line-height: 1.2;
+  text-align: left;
+  border-bottom: 1px dashed #c7c7c7;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+.information-price {
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  color: #000000;
+  line-height: 1.2;
+  text-align: left;
+  border-bottom: 1px dashed #c7c7c7;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+.flex-product-prices {
+  margin-top: 15px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.text-underline-through {
+  text-decoration: line-through;
+}
+.text-sale {
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+  color: #ca2027;
+  line-height: 1.2;
+  text-align: left;
+}
+.text-quality {
+  width: auto !important;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  color: #353535;
+  line-height: 1.538;
+}
+.text-have {
+  margin-top: 20px;
+  justify-content: flex-end;
+  display: flex;
+  /* text-align: right; */
+  line-height: 40px;
+  height: 30px;
+  margin-bottom: 20px;
+  border-top: 1px dashed #c7c7c7;
+}
+.button-prices {
+  color: #6e6e6e;
+  border: 1px solid #e1e2e4;
+  width: 230px;
+  background: transparent;
+  text-shadow: 0 1px 0 #fff;
+  height: 40px;
+  text-shadow: 0 1px 0 #fff;
+}
+.field-free {
+  width: 100%;
+  text-align: right;
+}
+.text-have-free {
+  font-weight: normal !important;
+  display: inline-block !important;
+  padding: 0;
+  margin: 0;
+  font-size: 12px !important;
+}
+.button-prices-containner {
+  margin-top: 20px;
+}
+.yellowbutton-button {
+  float: left;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e1af04;
+  border-radius: 3px;
+  width: 230px;
+  height: 39px;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  color: #3e3535;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 1.2;
+  background: #ffc705
+    url(../../../../../../../../design/themes/vinabook_v5/media/images/icon_cart_1_2x.png)
+    no-repeat 40px center;
+  background-size: 22px;
+  -o-transition: 0.2s;
+  -ms-transition: 0.2s;
+  -moz-transition: 0.2s;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+.text-save {
+  line-height: 1.538;
+  color: #087b39;
+}
+.presentation-book {
+  display: flex;
+  margin-top: 50px;
+  border-bottom: 1px dashed #c7c7c7;
+  width: 100%;
+}
+.presentation-book a {
+  color: #888888;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: -2px;
+  float: left;
+  padding: 0 30px;
+  white-space: nowrap;
+  padding-bottom: 12px;
+  border-bottom: 3px solid transparent;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 13px;
+}
+.title-book {
+  border-bottom: none;
+  background: none;
+  max-width: 790px;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  color: #555555;
+  font-weight: bold;
+  line-height: 1.5;
+  text-align: left;
+  margin-bottom: 30px;
+}
+.name-information-book-gt {
+  font-size: 14px;
+  font-family: "RobotoSlab";
+  color: #555555;
+  line-height: 1.714;
+  word-wrap: break-word;
+  margin-bottom: 20px;
+}
+.read-more {
+  padding-left: 17px;
+  margin-top: 20px;
+  height: 15px;
+  background: url(../../../../../../../../design/themes/vinabook_v5/media/images/2_arow_2x.png)
+    left 2px no-repeat;
+  background-size: 10px;
+  font-size: 12px;
+  font-family: "Roboto", sans-serif;
+  color: #008340;
+  line-height: 1.5;
+  text-align: center;
+}
+.main-containner-javascript {
+  margin-top: 30px;
+}
+.main-containner-javascripts p {
+  color: #66645c;
+  font-size: 25px;
+  padding: 6px 0;
+  word-wrap: break-word;
+}
+.author-a {
+  margin-bottom: 20px;
+}
+.read-more {
+  margin: 10px 0px;
+  text-decoration: none;
+}
+.text-information-full {
+  color: #66645c;
+  width: 900px;
+  line-height: 35px;
+}
+.containner-thongtinchitiet {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+.containner-full-information-book {
+  max-width: 800px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.box-containner-full-infor {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.flex-text {
+  font-size: 11px;
+  margin: 10px 0px;
+  max-width: 300px;
+  display: flex;
+}
+.flex-text span {
+  font-size: 11px;
+}
+.width-145 {
+  width: 145px;
+}
