@@ -94,12 +94,15 @@
                   </div>
               </div>
               <div class="log-and-reg">
-                  <div class="log log-seperate js-log">
-                      Đăng Nhập
-                  </div>
-                  <div class="reg">
-                      <a href="dangky.html">Đăng Ký</a>
-                  </div>
+                @if (Cookie::has('user_id'))
+                    <a class="js-logout" href="{{ route('logout') }}" style="color: black; text-decoration: none;">Đăng xuất</a>
+                    @else
+                    <a href="{{ route('login') }}">Đăng nhập</a>
+                    <span class="arrow">&nbsp;</span>
+                    <span>|</span>
+                    <span class="arrow">&nbsp;</span>
+                    <a href="{{ route('dangky') }}">Đăng Ký</a>
+                    @endif
               </div>
 
 

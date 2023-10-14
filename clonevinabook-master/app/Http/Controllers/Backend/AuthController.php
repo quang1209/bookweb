@@ -14,7 +14,7 @@ class AuthController extends Controller
 {
     public function __construct()
     {
-        
+
     }
     public function register(){
        return view('webpage.dangky');
@@ -23,8 +23,8 @@ class AuthController extends Controller
        return view('webpage.login');
      }
      public function create(RegisterRequest $request){
-   //  
- 
+   //
+
      // Create a new user and save
      $user = new User;
      $user->fullname = $request->input('fullname');
@@ -33,11 +33,11 @@ class AuthController extends Controller
      $user->dateofbirth = $request->input('date');
      $user->sex = $request->input('gioitinh');
      $user->save();
- 
-     
+
+
      Auth::login($user);
- 
-    
+
+
      return redirect('/login')->with('success', 'Đăng ký thành công');
      }
      public function checkuser(AuthRequest $request){
@@ -49,21 +49,21 @@ class AuthController extends Controller
       $previousUrl = session('previous_url');
       if (Auth::attempt($cremential)) {
          $current = url()->current();
-         Cookie::queue('user_id', Auth::id(), 300); 
- 
-         return redirect($previousUrl ?: route('webpage.index'))->with('success', 'Đăng nhập thành công');
+         Cookie::queue('user_id', Auth::id(), 300);
+
+         return redirect($previousUrl ?: route('trangchu.index'))->with('success', 'Đăng nhập thành công');
      }
-      
-        
- 
+
+
+
        return redirect() ->route('login')->with('error',"email hoặc mật khẩu không chính xác");
     }
     public function logout(Request $request)
 {
     Cookie::queue(Cookie::forget('user_id'));
     Auth::logout();
-   
+
     return redirect()->back();
 }
-    
+
 }
