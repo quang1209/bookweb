@@ -74,6 +74,7 @@ Route::post('/sach',[SachController::class,'store'])->name('sach.store');
 Route::get('/sach/{sach}/edit',[SachController::class,'edit'])->name('sach.edit');
 Route::put('/sach/{sach}/update',[SachController::class,'update'])->name('sach.update');
 Route::delete('/sach/{sach}/delete',[SachController::class,'delete'])->name('sach.delete');
+
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/dangky', [AuthController::class, 'register'])->name('dangky');
 Route::post('/dangky', [AuthController::class, 'create'])->name('create');

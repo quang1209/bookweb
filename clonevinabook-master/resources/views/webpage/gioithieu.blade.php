@@ -59,7 +59,7 @@
             <div class="grid wide">
                 <div class="header-with-search">
                     <div class="header__logo">
-                        <a href="{{ url('/') }}" class="header__logo-link">
+                        <a href="{{ route('trangchu.index') }}" class="header__logo-link">
                             <img src="{{ asset('img/vnb_logo_2x.png') }}" alt="">
                         </a>
                     </div>

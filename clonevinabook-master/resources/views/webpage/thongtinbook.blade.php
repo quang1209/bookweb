@@ -45,7 +45,7 @@
         <div class="containner-main-search">
             <div class="search-bar">
                 <div class="into-search-bar">
-                    <a href="sackchuyennganh.php">
+                    <a href="/trangchu">
                         <img width="252" height="33"
                             src="https://www.vinabook.com/images/thumbnails/img/252/33/vnb_logo_2x.png" />
                     </a>

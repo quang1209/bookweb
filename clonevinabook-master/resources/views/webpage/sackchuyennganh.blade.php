@@ -45,7 +45,7 @@
         <div class="containner-main-search">
             <div class="search-bar">
                 <div class="into-search-bar">
-                    <a href="{{ url('/vinabook/index.blade.php') }}">
+                    <a href="{{ route('trangchu.index') }}">
                         <img width="252" height="33" src="{{ asset('images/logovnb.png') }}" /></a>
                 </div>
                 <div class="input-group">
