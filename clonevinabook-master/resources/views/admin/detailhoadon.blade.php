@@ -36,40 +36,29 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <div class="w3-row-padding w3-margin-bottom wrapped">
     <div class="box">
       <div class="box-header">
-        <h3 class="box-title">Quản lý dịch vụ</h3>
+        <h3 class="box-title">Thông tin hóa đơn</h3>
       </div><!-- /.box-header -->
       <div class="box-body">
         <table class="table table-bordered table-striped dataTable">
           <thead >
             <tr >
-              <th class="title boxcontent" style="width: 5%">ID</th>
-              <th class="title boxcontent" style="width: 45%">Tên dịch vụ</th>
-              <th class="title boxcontent " style="width: 40%">Giá tiền</th>
-              <th class="edit boxcontent " style="width: 10%;">Tác vụ</th>
+              <th class="title boxcontent" style="width: 5%;">Số đơn hàng</th>
+              <th class="title boxcontent" style="width: 40%;">Tên khách hàng</th>
+              <th class="title boxcontent" style="width: 10%;">Số điện thoại</th>
+              <th class="title boxcontent" style="width: 15%;">Địa chỉ</th>
+              <th class="edit boxcontent" style="width: 15%;">Hình thức thanh toán</th>
             </tr>
-            @foreach ($dichvu as $dichvu)
             <tr >
-              <td class="boxcontent ">{{$dichvu->id}}</td>
-              <td class="boxcontent">{{$dichvu->tendv}}</td>
-              <td class="boxcontent">{{$dichvu->gia}}</td>
-              <td class="boxcontent ">
-                <form method="POST" action="{{route('dichvu.delete',['dichvu'=>$dichvu])}}">
-                    @csrf
-                    @method('delete')
-                    <a href="{{route('dichvu.edit',['dichvu' =>$dichvu])}}" class="editbtn btn btn-fix"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <button type="submit" class="deletebtn btn"><i class="fa-solid fa-trash"></i></button></td>
-                </form>
-
+              <td class="boxcontent">{{$hoadon->id_hoadon}}</td>
+              <td class="boxcontent ">{{$hoadon->hovaten}}</td>
+              <td class="boxcontent ">{{$hoadon->sodiethoai}}</td>
+              <td class="boxcontent ">{{$hoadon->diachi}}</td>
+              <td class="boxcontent ">{{$hoadon->hinhthucthanhtoan}}</td>
             </tr>
-            @endforeach
-
+            
 
           </thead>
         </table>
-        <div  style="text-align:left">
-      <a class="btn editbtn "href="/dichvu/create">
-          Thêm Dịch vụ</a>
-      </div>
       </div><!-- /.box-body -->
 
 

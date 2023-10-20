@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 14, 2023 lúc 08:46 AM
+-- Thời gian đã tạo: Th10 19, 2023 lúc 04:49 PM
 -- Phiên bản máy phục vụ: 10.4.27-MariaDB
 -- Phiên bản PHP: 8.2.0
 
@@ -48,21 +48,33 @@ INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `r
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `dichvu`
+-- Cấu trúc bảng cho bảng `chitiethoadon`
 --
 
-CREATE TABLE `dichvu` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `tendv` varchar(255) NOT NULL,
-  `gia` double NOT NULL
+CREATE TABLE `chitiethoadon` (
+  `id_chitiethoadon` bigint(20) UNSIGNED NOT NULL,
+  `id_hoadon` bigint(20) UNSIGNED NOT NULL,
+  `id_sach` bigint(20) UNSIGNED NOT NULL,
+  `soluong` int(11) NOT NULL,
+  `gia` double NOT NULL,
+  `thanhtien` double NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `dichvu`
+-- Đang đổ dữ liệu cho bảng `chitiethoadon`
 --
 
-INSERT INTO `dichvu` (`id`, `tendv`, `gia`) VALUES
-(3, 'abcd', 123);
+INSERT INTO `chitiethoadon` (`id_chitiethoadon`, `id_hoadon`, `id_sach`, `soluong`, `gia`, `thanhtien`, `created_at`, `updated_at`) VALUES
+(8, 30, 15, 1, 293, 383, NULL, NULL),
+(9, 30, 13, 1, 90, 383, NULL, NULL),
+(14, 47, 15, 1, 293, 383, NULL, NULL),
+(15, 47, 13, 1, 90, 383, NULL, NULL),
+(16, 59, 15, 1, 293, 293, NULL, NULL),
+(17, 61, 15, 1, 293, 293, NULL, NULL),
+(18, 63, 43, 1, 90, 90, NULL, NULL),
+(19, 65, 15, 1, 293, 293, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -79,6 +91,40 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `hoadon`
+--
+
+CREATE TABLE `hoadon` (
+  `id_hoadon` bigint(20) UNSIGNED NOT NULL,
+  `hovaten` varchar(255) NOT NULL,
+  `sodiethoai` varchar(255) NOT NULL,
+  `diachi` varchar(255) NOT NULL,
+  `hinhthucthanhtoan` varchar(255) NOT NULL,
+  `thanhtien` double NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `note` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `hoadon`
+--
+
+INSERT INTO `hoadon` (`id_hoadon`, `hovaten`, `sodiethoai`, `diachi`, `hinhthucthanhtoan`, `thanhtien`, `created_at`, `updated_at`, `note`) VALUES
+(30, 'a', '12345', 'ha noi', 'Cod', 383, NULL, NULL, 'qwerq'),
+(47, 'qer77', '214345', 'ha noiv3', 'ATM', 383, NULL, NULL, '5'),
+(59, 'q', '24413', '5', 'Cod', 293, NULL, NULL, '4214'),
+(60, 'q', '24413', '5', 'Cod', 293, NULL, NULL, '4214'),
+(61, 'a5', '123454', '5', 'Cod', 293, NULL, NULL, '5'),
+(62, 'a5', '123454', '5', 'Cod', 293, NULL, NULL, '5'),
+(63, 'a5', '12345', 'ha noi', 'Cod', 90, NULL, NULL, 'y'),
+(64, 'a5', '12345', 'ha noi', 'Cod', 90, NULL, NULL, 'y'),
+(65, 'a', '123454', 'ha noi5', 'Cod', 293, NULL, NULL, 'sdfafsdf'),
+(66, 'a', '123454', 'ha noi5', 'Cod', 293, NULL, NULL, 'sdfafsdf');
 
 -- --------------------------------------------------------
 
@@ -113,7 +159,12 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (14, '2023_10_13_005520_drop_theloai_table', 9),
 (15, '2023_10_13_005830_alter_theloai_table', 10),
 (16, '2023_10_13_011003_alter_theloai_table', 11),
-(17, '2023_10_13_063451_create_admins_table', 12);
+(17, '2023_10_13_063451_create_admins_table', 12),
+(18, '2023_10_17_133113_create_hoadon_table', 13),
+(19, '2023_10_17_202234_update_hoadon_table', 14),
+(20, '2023_10_18_060239_create_chitiethoadon_table', 15),
+(21, '2023_10_18_065625_create_chitiethoadon_table', 16),
+(22, '2023_10_18_065731_alter_chitiethoadon_table', 17);
 
 -- --------------------------------------------------------
 
@@ -290,7 +341,9 @@ INSERT INTO `users` (`id`, `fullname`, `email`, `password`, `dateofbirth`, `sex`
 (5, 'tran quoc viet', 'vietyasuo567333@gmail.com', '$2y$10$4luQA3eW4xDVcFxoqjAyK.hCt70R03aPciVUnam21mJPk/gTktYNi', '2023-10-26', 'nam', NULL, '2023-10-13 07:55:09', '2023-10-13 07:55:09'),
 (6, 'tran quoc viet', 'ad@gmail.com22', '$2y$10$n.OGoIt2THlolk4IJmTo2uGS.EPXG.c0uixr30lweYlBxcDWMkI6K', '2023-10-26', 'nam', NULL, '2023-10-13 08:01:20', '2023-10-13 08:01:20'),
 (7, 'Trần Quốc Việt', 'vietyasuo56733@gmail.com', '$2y$10$sma5u.r9D34e.otxSmM5j.3GxGXR1QD7ANUuS4Y1Y7Cf39hpQ9Efy', '2023-10-19', 'nam', NULL, '2023-10-13 08:01:31', '2023-10-13 08:01:31'),
-(8, 'tran quoc viet', 'vietyasuo56733322@gmail.com', '$2y$10$knSaO4LpqJuh2naoL5ZSS.JY.F/z.bOkIWNibtv/Jqwm0QiwEf6P6', '2023-10-26', 'nữ', NULL, '2023-10-13 08:07:20', '2023-10-13 08:07:20');
+(8, 'tran quoc viet', 'vietyasuo56733322@gmail.com', '$2y$10$knSaO4LpqJuh2naoL5ZSS.JY.F/z.bOkIWNibtv/Jqwm0QiwEf6P6', '2023-10-26', 'nữ', NULL, '2023-10-13 08:07:20', '2023-10-13 08:07:20'),
+(9, 'Dương Đức Quang', 'a@gmail.com', '$2y$10$YNtQY.LcVXnkRHDFhZOzWO3n3WenKf4xiZGQAcRT5PY5GTSMDeyre', '3123-02-03', 'nam', NULL, '2023-10-14 00:31:18', '2023-10-14 00:31:18'),
+(10, 'quang', 'a44444@gmail.com', '$2y$10$1iNq9PfpwceAfR8FsfbFTO9r3CgSrwM9YfdYIOJh/kCN03OecCpMC', '2023-10-17', 'nam', NULL, '2023-10-14 20:35:09', '2023-10-14 20:35:09');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -304,10 +357,12 @@ ALTER TABLE `admins`
   ADD UNIQUE KEY `admins_email_unique` (`email`);
 
 --
--- Chỉ mục cho bảng `dichvu`
+-- Chỉ mục cho bảng `chitiethoadon`
 --
-ALTER TABLE `dichvu`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `chitiethoadon`
+  ADD PRIMARY KEY (`id_chitiethoadon`),
+  ADD KEY `chitiethoadon_id_hoadon_foreign` (`id_hoadon`),
+  ADD KEY `chitiethoadon_id_sach_foreign` (`id_sach`);
 
 --
 -- Chỉ mục cho bảng `failed_jobs`
@@ -315,6 +370,12 @@ ALTER TABLE `dichvu`
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Chỉ mục cho bảng `hoadon`
+--
+ALTER TABLE `hoadon`
+  ADD PRIMARY KEY (`id_hoadon`);
 
 --
 -- Chỉ mục cho bảng `migrations`
@@ -374,10 +435,10 @@ ALTER TABLE `admins`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT cho bảng `dichvu`
+-- AUTO_INCREMENT cho bảng `chitiethoadon`
 --
-ALTER TABLE `dichvu`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `chitiethoadon`
+  MODIFY `id_chitiethoadon` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT cho bảng `failed_jobs`
@@ -386,10 +447,16 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT cho bảng `hoadon`
+--
+ALTER TABLE `hoadon`
+  MODIFY `id_hoadon` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+
+--
 -- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT cho bảng `nhaxb`
@@ -419,11 +486,18 @@ ALTER TABLE `theloai`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
 --
+
+--
+-- Các ràng buộc cho bảng `chitiethoadon`
+--
+ALTER TABLE `chitiethoadon`
+  ADD CONSTRAINT `chitiethoadon_id_hoadon_foreign` FOREIGN KEY (`id_hoadon`) REFERENCES `hoadon` (`id_hoadon`),
+  ADD CONSTRAINT `chitiethoadon_id_sach_foreign` FOREIGN KEY (`id_sach`) REFERENCES `sach` (`id`);
 
 --
 -- Các ràng buộc cho bảng `sach`

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Dashboard</title>
+<title>admin</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="/css/box.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="/css/form.css">
 <style>
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </style>
@@ -20,7 +19,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 @include("admin.header")
 
 <!-- Sidebar/menu -->
-@include('admin.sidebar')
+@include("admin.sidebar")
 
 
 <!-- Overlay effect when opening sidebar on small screens -->
@@ -35,48 +34,39 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </header>
 
   <div class="w3-row-padding w3-margin-bottom wrapped">
-    <a href="/sach" class="w3-quarter">
-      <div class="w3-container w3-red w3-padding-16">
-        <div class="w3-left"><i class="fa-solid fa-book w3-xxxlarge"></i></div>
-        <div class="w3-right">
-        </div>
-        <div class="w3-clear"></div>
-        <h4>Quản lí sách</h4>
-      </div>
-    </a>
-    <a href="/nhaxb" class="w3-quarter">
-      <div class="w3-container w3-teal w3-padding-16">
-        <div class="w3-left"><i class="fa-solid fa-house w3-xxxlarge"></i></div>
-        <div class="w3-right">
-        </div>
-        <div class="w3-clear"></div>
-        <h4>Quản lý nhà xuất bản</h4>
-      </div>
-    </a>
-    <a href="/nhaxb" class="w3-quarter">
-        <div class="w3-container yellow  w3-padding-16 w3-text-white">
-          <div class="w3-left"><i class="fa-solid fa-folder w3-xxxlarge"></i></div>
-          <div class="w3-right">
-          </div>
-          <div class="w3-clear"></div>
-          <h4>Quản lý thể loại</h4>
-        </div>
-      </a>
-    <a class="w3-quarter">
-        <div class="w3-container purple w3-text-white w3-padding-16" style="margin-top:0 ">
-          <div class="w3-left" ><i class="fa-solid fa-print w3-xxxlarge"></i></div>
-          <div class="w3-right">
-          </div>
-          <div class="w3-clear"></div>
-          <h4>Danh sách hóa đơn</h4>
-        </div>
-      </a>
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">Quản lý Nhà xuất bản</h3>
+      </div><!-- /.box-header -->
+      <div class="box-body">
+        <table class="table table-bordered table-striped dataTable">
+          <thead >
+            <tr >
+              <th class="title boxcontent" style="width: 5%;">Số đơn hàng</th>
+              <th class="title boxcontent" style="width: 40%;">Tên</th>
+              <th class="title boxcontent" style="width: 10%;">Số lượng</th>
+              <th class="title boxcontent" style="width: 15%;">Đơn giá</th>
+              <th class="edit boxcontent" style="width: 15%;">Thành tiền</th>
+            </tr>
+            @foreach ($chitiethoadon as $chitiethoadon)
+            <tr >
+              <td class="boxcontent">{{$chitiethoadon->id_hoadon}}</td>
+              <td class="boxcontent "><a href="{{route('hoadon.detail',$chitiethoadon->id_hoadon)}}" style="text-decoration: none">{{$chitiethoadon->ten}}</a></td>
+              <td class="boxcontent ">{{$chitiethoadon->soluong}}</td>
+              <td class="boxcontent ">{{$chitiethoadon->gia}}</td>
+              <td class="boxcontent ">{{$chitiethoadon->thanhtien}}</td>
+            </tr>
+            @endforeach
+
+          </thead>
+        </table>
+      </div><!-- /.box-body -->
+
+
+    </div><!-- /.box -->
   </div>
   <!-- Footer -->
-  <footer class="w3-container w3-padding-16 w3-light-grey">
-    <h4>FOOTER</h4>
-    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-  </footer>
+  @include("admin.footer")
 
   <!-- End page content -->
 </div>

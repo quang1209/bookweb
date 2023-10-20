@@ -12,6 +12,10 @@ use App\Http\Controllers\TrangchuController;
 use App\Models\nhaxb;
 use App\Models\sach;
 use App\Http\Controllers\Backend\AuthController;
+use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\DathangController;
+use App\Http\Controllers\DonhangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,16 +30,6 @@ use App\Http\Controllers\Backend\AuthController;
 
 Route::get('/', function () {
     return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__.'/auth.php';
@@ -60,13 +54,6 @@ Route::post('/theloai',[TheloaiController::class,'store'])->name('theloai.store'
 Route::get('/theloai/{theloai}/edit',[TheloaiController::class,'edit'])->name('theloai.edit');
 Route::put('/theloai/{theloai}/update',[TheloaiController::class,'update'])->name('theloai.update');
 Route::delete('/theloai/{theloai}/delete',[TheloaiController::class,'delete'])->name('theloai.delete');
-//dich vu
-Route::get('/dichvu',[DichvuController::class,'index'])->name('dichvu.index');
-Route::get('/dichvu/create',[DichvuController::class,'create'])->name('dichvu.create');
-Route::post('/dichvu',[DichvuController::class,'store'])->name('dichvu.store');
-Route::get('/dichvu/{dichvu}/edit',[DichvuController::class,'edit'])->name('dichvu.edit');
-Route::put('/dichvu/{dichvu}/update',[DichvuController::class,'update'])->name('dichvu.update');
-Route::delete('/dichvu/{dichvu}/delete',[DichvuController::class,'delete'])->name('dichvu.delete');
 //sach
 Route::get('/sach',[SachController::class,'index'])->name('sach.index');
 Route::get('/sach/create',[SachController::class,'create'])->name('sach.create');
@@ -75,7 +62,11 @@ Route::get('/sach/{sach}/edit',[SachController::class,'edit'])->name('sach.edit'
 Route::put('/sach/{sach}/update',[SachController::class,'update'])->name('sach.update');
 Route::delete('/sach/{sach}/delete',[SachController::class,'delete'])->name('sach.delete');
 
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+
+
+Route::get('/logout', [AuthController::class, 'logout'])->name('dangxuat');
 Route::get('/dangky', [AuthController::class, 'register'])->name('dangky');
 Route::post('/dangky', [AuthController::class, 'create'])->name('create');
 Route::get('/login', [AuthController::class, 'login'])->middleware('checkLogin')->name('login');
@@ -92,3 +83,20 @@ Route::get('/thongtinbook', function () {
 });
 //trangchu
 Route::get('/trangchu',[TrangchuController::class,'index'])->name('trangchu.index');
+Route::get('/trangchu/{detail}/detail',[TrangchuController::class,'view'])->name('trangchu.detail');
+//cart
+Route::get('/giohang',[CartController::class,'index'])->name('giohang');
+Route::get('/addtocart/{id}',[CartController::class,'addtoCart'])->name('addtocart');
+Route::put('/increase/{id}',[CartController::class,'increaseCart'])->name('increaseCart');
+Route::put('/decrease/{id}',[CartController::class,'decreaseCart'])->name('decreaseCart');
+Route::delete('/removecart/{id}',[CartController::class,'remove'])->name('removecart');
+//dathang
+Route::get('/dathang/create',[DathangController::class,'create'])->name('order.create');
+Route::post('/dathang',[DathangController::class,'store'])->name('order.store');
+Route::get('/dathang/{id}/xacnhan',[DathangController::class,'index'])->name('order');
+Route::get('/dathang/{id}/edit',[DathangController::class,'edit'])->name('order.edit');
+Route::put('/dathang/{id}/update',[DathangController::class,'update'])->name('order.update');
+Route::put('/dathang/{id}/xacnhan',[DathangController::class,'xacnhan'])->name('order.xacnhan');
+//
+Route::get('/danhsachdonhang',[DonhangController::class,'view'])->name('admin.hoadon');
+Route::get('/danhsachdonhang/{detail}/detail',[DonhangController::class,'viewhoadon'])->name('hoadon.detail');

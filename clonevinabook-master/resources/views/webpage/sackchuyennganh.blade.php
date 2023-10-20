@@ -67,7 +67,7 @@
                 </div>
                 <div class="login-logout">
                     @if (Cookie::has('user_id'))
-                    <a class="js-logout" href="{{ route('logout') }}">Đăng xuất</a>
+                    <a class="js-logout" href="{{ route('dangxuat') }}">Đăng xuất</a>
                     @else
                     <a href="{{ route('login') }}">Đăng nhập</a>
                     <span class="arrow">&nbsp;</span>

@@ -100,7 +100,7 @@
                     </div>
                     <div class="log-and-reg">
                         @if (Cookie::has('user_id'))
-                        <a class="js-logout" style="text-decoration: none;color:black" href="{{ route('logout') }}">Đăng
+                        <a class="js-logout" style="text-decoration: none;color:black" href="{{ route('dangxuat') }}">Đăng
                             xuất</a>
                         @else
                         <div class="log log-seperate  bold" href="{{ route('login') }}"> Đăng Nhập </div>

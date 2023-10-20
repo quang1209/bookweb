@@ -10,82 +10,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/grid.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
         rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-
+    <link rel="stylesheet" href="/css/box.css">
 
     <script src="https://kit.fontawesome.com/ff7b6d55a9.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="/css/thongtin.css" />
-    <link href="/js/sackchuyennganh.js" />
+
 </head>
 
 <body>
     <div class="helper-containner" id="main-containenr">
-        <div class="main-top">
-            <div class="top-containner">
-                <div class="header-top">
-                    <i class="fas fa-truck vnb"></i>
-                    <span class="text-top hover-free">Miễn phí giao hàng</span>
-                    <span class="arrow">&nbsp;</span>
-                </div>
-                <div class="header-top">
-                    <i class="fa-solid fa-book vnb"></i>
-                    <span class="text-top hover-book">80.000 tựa sáck</span>
-                    <span class="arrow">&nbsp;</span>
-                </div>
-                <div class="header-top">
-                    <i class="fa-solid fa-mobile-screen vnb"></i>
-                    <span class="text-top hover-phone">Vinabook Reader</span>
-                    <span class="arrow">&nbsp;</span>
-                </div>
-            </div>
-        </div>
-        <div class="containner-main-search">
-            <div class="search-bar">
-                <div class="into-search-bar">
-                    <a href="/trangchu">
-                        <img width="252" height="33"
-                            src="https://www.vinabook.com/images/thumbnails/img/252/33/vnb_logo_2x.png" />
-                    </a>
-                </div>
-                <div class="input-group">
-                    <div class="center-icon">
-                        <i class="fa fa-search vnb" onclick=""></i>
-                    </div>
-                    <input type="text" class="input-search" name="q" id="searchInput"
-                        placeholder="Tìm kiếm tựa sách, tác giả" value="" />
-                    <ul id="searchResults"></ul>
-                    <button title="Tìm sách" class="button-search" type="submit">
-                        Tìm sách
-                    </button>
-                </div>
-                <div class="cart-shopping">
-                    <a>
-                        <i class="fa-solid fa-cart-shopping" style="color: #057a45" id="cart-status"></i>
-                    </a>
-                    <div class="total-book"></div>
-                </div>
-
-                <div class="login-logout">
-                    @if (Cookie::has('user_id'))
-                    <a class="js-logout" href="{{ route('dangxuat') }}">Đăng xuất</a>
-                    @else
-                    <a href="{{ route('login') }}">Đăng nhập</a>
-                    <span class="arrow">&nbsp;</span>
-                    <span>|</span>
-                    <span class="arrow">&nbsp;</span>
-                    <a href="{{ route('dangky') }}">Đăng Ký</a>
-                    @endif
-                </div>
-            </div>
-        </div>
+        @include('headerclient')
         <div class="list-hotline-support">
             <div class="na-mid">
                 <div class="list-icon">
                     <i class="fa-solid fa-list"></i>
-                    <span>Danh Mục Sáck</span>
+                    <span>Danh Mục Sách</span>
                     <i class="fa-solid fa-caret-down"></i>
                 </div>
                 <div class="hotline-support">
@@ -108,23 +54,29 @@
             <div class="containner-body">
                 <div class="middle-body">
                     <span>Trang chủ &nbsp;></span>
-                    <span style="margin-left: 10px">Sáck Chuyên Ngành&nbsp;></span>
-                    <span style="margin-left: 10px">Văn Hóa Nghệ Thuật&nbsp;></span>
-                    <span id="name-book-aka"></span>
+                    <span style="margin-left: 10px">{{$product->name}}&nbsp;></span>
+                    <span style="margin-left: 10px">{{$product->theloai}}&nbsp;></span>
+                    <span >{{$product->ten}}</span>
                 </div>
                 <div class="main-body">
                     <div class="img-auto">
                         <a href="#">
                             <img src="/images/icon/icon_xemtruoc_2x.png" width="98" height="23" />
                         </a>
-                        <img class="img-inject" src="" />
+                        <img  src="/images/{{$product->hinhanh}}" width="242.7px" height="242.7px"/>
                     </div>
                     <div class="middle-information">
-                        <div id="mid-information-book"></div>
+                        <div id="mid-information-book">
+                        <h3 class="mainbox-title">{{$product->ten}}</h3>
+                        <div>Tác giả: <span style="color: #057a45">{{$product->tacgia}}</span></div>
+                        <div>Nhà suất Bản: {{$product->name}}</div>
+                        <div>Nhà Phát Hành: <span style="color: #057a45">{{$product->nhaphathanh}}</span></div>
+                        <div><span class="line-height-gray text">{{$product->mota}}<a href="#">Xem Thêm</a></div>
+                        </div>
                         <div class="sub-title">Thông Tin Kèm Theo</div>
                         <div>
                             <img src="/images/icon/dot_check.png" />
-                            <span class="font-size-14">Có Dịck Vụ Bọc Sáck plastic Cao Cấp Cho Sáck Này(<span
+                            <span class="font-size-14">Có Dịch Vụ Bọc Sáck plastic Cao Cấp Cho Sáck Này(<span
                                     class="gray-gray-text">Chi Tiết)
                                 </span> </span><br />
                         </div>
@@ -137,8 +89,27 @@
                     </div>
                     <div class="product-info-right">
                         <div class="information-price">Thông Tin Thanh Toán</div>
-                        <div class="product-prices"></div>
-                        <div class="button-prices-containner"></div>
+                        <div class="product-prices">
+                            <div class="flex-product-prices">
+                                <span>Giá Bìa</span>
+                                <span class="text-underline-through">{{$product->gia}}.000đ</span>
+                                </div>
+                                <div class="flex-product-prices">
+                                <span>Giá Bán</span>
+                                <span class="text-sale">{{$product->giakhuyenmai}}.000đ</span>
+                                </div>
+                                <div class="flex-product-prices">
+                                <span>Chất Lượng Sách</span>
+                                <span class="text-quality">Loại A </span>
+                                </div>
+                                <div class=" fiend">
+                                <span class="text-have">SẮP HẾT HÀNG</span>
+                                </div>
+                        </div>
+                        <div class="button-prices-containner">
+                            <a class="yellowbutton-button" href="{{route('addtocart',$product->id)}}" >Mua Ngay
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="gt-tt-bl">
@@ -147,8 +118,53 @@
                         <a href="#">Thông Tin chi Tiết </a>
                         <a href="#">Đánh Giá&Bình Luận</a>
                     </div>
-                    <div class="information-this-book"></div>
-                    <div class="render-information-full"></div>
+                    <div class="information-this-book">
+                        <div class="main-containner-javascript">
+                            <h3 class="title-book">{{$product->ten}}</h3>
+                            <div class="product-info-right">
+                            <div class="information-price">Thông Tin Tác Giả</div>
+                            <div class="author-a">{{$product->tacgia}}</div>
+                            <a href="#" class="read-more">Vào Trang Riêng Của Tác Giả</a>
+                            <a href="#" class="read-more">Xem Tất Cả Sách Của Tác Giả</a>
+                            </div>
+                            <div class="text-information-full">{{$product->mota}}</div>
+                        </div>
+                    </div>
+                    <div class="render-information-full">
+                        <div class="containner-thongtinchitiet">
+                            <h3 class="title-book">Thông Tin Chi Tiết</h3>
+                            <div class="containner-full-information-book">
+                            <div class="box-containner-full-infor">
+                            <div class="flex-text">
+                            <span class="width-145">Tác Giả:</span><span>{{$product->tacgia}}</span>
+                            </div>
+                            <div class="flex-text">
+                            <span class="width-145">Nhà Phát Hành:</span><span>{{$product->nhaphathanh}}</span></div>
+                            <div class="flex-text">
+                            <span class="width-145">Khối Lượng:</span><span>{{$product->khoiluong}}</span></div>
+                            <div class="flex-text">
+                            <span class="width-145">Định Dạng:</span><span>{{$product->dinhdang}}</span></div>
+                            <div class="flex-text">
+                            <span class="width-145">Ngày Phát Hành:</span><span>{{$product->date}}</span></div>
+                            </div>
+                            <div class="box-containner-full-infor">
+                            <div class="flex-text">
+                            <span class="width-145">Nhà Suất Bản:</span><span>{{$product->name}}</span></div>
+                            <div class="flex-text">
+                            <span class="width-145">Ngôn Ngữ:</span><span>{{$product->ngonngu}}</span></div>
+                            <div class="flex-text">
+                            <span class="width-145">Kíck Thước:</span><span>{{$product->kichthuoc}}</span></div>
+                            <div class="flex-text">
+                            <span class="width-145">Số Trang:</span><span>{{$product->sotrang}}</span></div>
+                            </div>
+                            </div>
+                            </div>
+                            @if (session('success'))
+                                <div>
+                                    {{session('success')}}
+                                </div>
+                            @endif
+                    </div>
                 </div>
             </div>
         </div>
@@ -218,7 +234,7 @@
                             <span class="main-text-bottom">
                                 <a href="#">trợ giúp</a>
                             </span>
-                            <span class="a-text-bottom a-hover-black" "=""><a href=" #">Quy Định Sử Dụng</a></span>
+                            <span class="a-text-bottom a-hover-black"><a href=" #">Quy Định Sử Dụng</a></span>
                             <span class="a-text-bottom a-hover-black"><a href="#">Hướng Dẫn Mua Hàng</a></span>
                             <span class="a-text-bottom a-hover-black"><a href="#">Phương Thức Thanh Toán</a></span>
                             <span class="a-text-bottom a-hover-black"><a href="#">Phương Thức Vận Chuyển</a></span>
@@ -410,7 +426,8 @@
         </div>
     </div>
     <script src="/js/thongtinbook.js " defer></script>
-    <script src="/js/sackchuyennganh.js"></script>
+
+    <script src="/js/cart.js"></script>
 </body>
 
 </html>

@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('theloai', function (Blueprint $table) {
-            $table->id();
-            $table->string('theloai');
+        Schema::table('chitiethoadon', function (Blueprint $table) {
+            $table->foreign('id_hoadon')->references('id_hoadon')->on('hoadon');
+            $table->foreign('id_sach')->references('id')->on('sach');
         });
     }
 
@@ -22,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('theloai');
+        //
     }
 };

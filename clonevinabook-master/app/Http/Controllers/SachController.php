@@ -76,6 +76,7 @@ class SachController extends Controller
             $imgName= $img->getClientOriginalName();
             $data['hinhanh']=$imgName;
             $sach->update($data);
+            
         return redirect(route('sach.index'))->with('success', 'Product Updated Succesffully');
     }
     public function delete(sach $sach){

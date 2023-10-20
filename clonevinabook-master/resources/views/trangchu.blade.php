@@ -17,99 +17,7 @@
 </head>
 <body>
     <div class="app">
-        <header class="header">
-            <div class="head__navbar-color">
-                <div class="grid wide">
-                <nav class="head__navbar">
-                    <ul class="header__navbar-list">
-                        <li id="header__navbar-item--a" class="header__navbar-item  header__navbar-item--has-des header__navbar-item--seperate">
-                            <i class="fa-solid fa-truck header__navbar-item--icon"></i>
-                             Miễn phí giao hàng
-                             <div class="header__des">
-                                <span class="bold">Miễn phí giao hàng toàn quốc</span> cho Đơn hàng từ 250.000đ.
-                             </div>
-                        </li>
-                        <li id="header__navbar-item--b" class="header__navbar-item   header__navbar-item--has-des header__navbar-item--seperate">
-                            <i class="fa-solid fa-book header__navbar-item--icon"></i>
-                            80.000 tựa sách
-                            <div class="header__des">
-                                Với hơn 80,000 đầu sách trong mọi lĩnh vực (và tiếp tục tăng mỗi ngày), Vinabook.com tự hào là nhà sách trên mạng có số lượng đầu sách lớn nhất Việt Nam, bạn có thể tìm được bất kỳ quyển sách nào cho mọi nhu cầu đọc sách của bạn.
-                             </div>
-                        </li>
-                        <li id="header__navbar-item--c" class="header__navbar-item  header__navbar-item--has-des ">
-                            <i class="fa-solid fa-mobile header__navbar-item--icon"></i>
-                            <a class="header__navbar-item-link" href="#">VinaBook Reader</a>
-                            <div class="header__des">
-                                Hơn 10,000 tựa sách và tạp chí trong thư viện sách khổng lồ của Vinabook Reader mọi lúc mọi nơi chỉ từ 825đ/ngày
-                             </div>
-                        </li>
-                    </ul>
-                </nav>
-                </div>
-            </div>
-        </header>
-        <div class="head-with-search-color">
-            <div class="grid wide">
-              <div class="header-with-search">
-               <div class="header__logo">
-                <a href="#" class="header__logo-link">
-                  <img src="/images/vnb_logo_2x.png" alt="">
-                </a>
-              </div>
-              <div class="header__search">
-                  <i class="fa-solid fa-magnifying-glass header__search-icon"></i>
-                  <div class="header__search-input-wrap">
-                      <input type="text" class="header__search-input" placeholder="Tìm kiếm tựa sách,tách giả">
-                      <div class="header__search-hot">
-                      <h3 class="header__search-hot-list-heading bold">Từ khóa hot</h3>
-                      <ul class="header__search-hot-list">
-                          <li class="header__search-hot-list-item">
-                              <a href="">Blockchain</a>
-                          </li>
-                          <li class="header__search-hot-list-item">
-                              <a href="">Nguyễn Nhật Ánh</a>
-                          </li>
-                          <li class="header__search-hot-list-item">
-                              <a href="">Mắt biếc</a>
-                          </li>
-                          <li class="header__search-hot-list-item">
-                              <a href="">Kinh Tế</a>
-                          </li>
-                          <li class="header__search-hot-list-item">
-                              <a href="">Nguyễn Ngọc Tư</a>
-                          </li>
-                      </ul>
-                      </div>
-                  </div>
-                  <button class="header__search-btn ">Tìm sách</button>
-              </div>
-              <div class="circle">
-                  <i class="fa-solid fa-cart-shopping cart cart-icon"></i>
-                  <span class="countsp" id="countsp"></span>
-                  <div class="header_cart-list">
-                      <div class="header_cart-list-item" id="header_cart-list-item">
-                          <p id="header_cart-list-item-empty">Giỏ hàng rỗng</p>
-
-                      </div>
-                  </div>
-              </div>
-              <div class="log-and-reg">
-                @if (Cookie::has('user_id'))
-                    <a class="js-logout" href="{{ route('logout') }}" style="color: black; text-decoration: none;">Đăng xuất</a>
-                    @else
-                    <a href="{{ route('login') }}">Đăng nhập</a>
-                    <span class="arrow">&nbsp;</span>
-                    <span>|</span>
-                    <span class="arrow">&nbsp;</span>
-                    <a href="{{ route('dangky') }}">Đăng Ký</a>
-                    @endif
-              </div>
-
-
-          </div>
-            </div>
-
-          </div>
+        @include('headerclient')
         <div class="body">
             <div class="body_header-color">
                 <div class="grid width">
@@ -135,7 +43,7 @@ T7 - Chủ nhật: Quý khách vui lòng để lại tin nhắn qua email<a href
                                 <a> Hỗ trợ trực tuyến</a>
                             </div>
                         </div>
-                    </div>
+            </div>
                 </div>
             </div>
             <div class="app-contain">
@@ -764,7 +672,7 @@ T7 - Chủ nhật: Quý khách vui lòng để lại tin nhắn qua email<a href
                                             <div class="product-book-info-des">
                                                 <div class="product-book-info-des-up">
                                                     <div class="product-book-info-des-link">
-                                                        <a href="">{{$sachbanchay->ten}}</a>
+                                                        <a href="{{route('trangchu.detail',['detail'=>$sachbanchay->id])}}">{{$sachbanchay->ten}}</a>
                                                     </div>
                                                     <span>{{$sachbanchay->tacgia}}</span>
                                                 </div>
@@ -844,7 +752,7 @@ T7 - Chủ nhật: Quý khách vui lòng để lại tin nhắn qua email<a href
                                             <div class="product-book-info-des">
                                                 <div class="product-book-info-des-up">
                                                     <div class="product-book-info-des-link">
-                                                        <a href="">{{$sach->ten}}</a>
+                                                        <a href="{{route('trangchu.detail',['detail'=>$sach->id])}}">{{$sach->ten}}</a>
                                                     </div>
                                                     <span>{{$sach->tacgia}}</span>
                                                 </div>
@@ -1003,7 +911,7 @@ T7 - Chủ nhật: Quý khách vui lòng để lại tin nhắn qua email<a href
                                             <div class="product-book-info-des">
                                                 <div class="product-book-info-des-up">
                                                     <div class="product-book-info-des-link">
-                                                        <a href="">{{$sach->ten}}</a>
+                                                        <a href="{{route('trangchu.detail',['detail'=>$sach->id])}}">{{$sach->ten}}</a>
                                                     </div>
                                                     <span>{{$sach->tacgia}}</span>
                                                 </div>
@@ -1048,7 +956,7 @@ T7 - Chủ nhật: Quý khách vui lòng để lại tin nhắn qua email<a href
                                             <div class="product-book-info-des">
                                                 <div class="product-book-info-des-up">
                                                     <div class="product-book-info-des-link">
-                                                        <a href="">{{$sach->ten}}</a>
+                                                        <a href="{{route('trangchu.detail',['detail'=>$sach->id])}}">{{$sach->ten}}</a>
                                                     </div>
                                                     <span>{{$sach->tacgia}}</span>
                                                 </div>
@@ -1092,7 +1000,7 @@ T7 - Chủ nhật: Quý khách vui lòng để lại tin nhắn qua email<a href
                                             <div class="product-book-info-des">
                                                 <div class="product-book-info-des-up">
                                                     <div class="product-book-info-des-link">
-                                                        <a href="">{{$sach->ten}}</a>
+                                                        <a href="{{route('trangchu.detail',['detail'=>$sach->id])}}">{{$sach->ten}}</a>
                                                     </div>
                                                     <span>{{$sach->tacgia}}</span>
                                                 </div>
@@ -1138,7 +1046,7 @@ T7 - Chủ nhật: Quý khách vui lòng để lại tin nhắn qua email<a href
                                                 <div class="product-book-info-des">
                                                     <div class="product-book-info-des-up">
                                                         <div class="product-book-info-des-link">
-                                                            <a href="">{{$sach->ten}}</a>
+                                                            <a href="{{route('trangchu.detail',['detail'=>$sach->id])}}">{{$sach->ten}}</a>
                                                         </div>
                                                         <span>{{$sach->tacgia}}</span>
                                                     </div>
@@ -1177,7 +1085,7 @@ T7 - Chủ nhật: Quý khách vui lòng để lại tin nhắn qua email<a href
                                         <div class="product-side">
                                         <img src="/images/{{$sach->hinhanh}}" alt="">
                                         <div class="product-side-des">
-                                            <a href="#">{{$sach->ten}}</a>
+                                            <a href="{{route('trangchu.detail',['detail'=>$sach->id])}}">{{$sach->ten}}</a>
                                             <span class="product-side-des-author">{{$sach->tacgia}}</span>
                                             <div class="star-group">
                                                 <i class="fa-solid fa-star"></i>
@@ -1206,7 +1114,7 @@ T7 - Chủ nhật: Quý khách vui lòng để lại tin nhắn qua email<a href
                                     <div class="product-side">
                                     <img src="/images/{{$sach->hinhanh}}" alt="">
                                     <div class="product-side-des">
-                                        <a href="#">{{$sach->ten}}</a>
+                                        <a href="{{route('trangchu.detail',['detail'=>$sach->id])}}">{{$sach->ten}}</a>
                                         <span class="product-side-des-author">{{$sach->tacgia}}</span>
                                         <div class="star-group">
                                             <i class="fa-solid fa-star"></i>
@@ -1233,7 +1141,7 @@ T7 - Chủ nhật: Quý khách vui lòng để lại tin nhắn qua email<a href
                                     <div class="product-side">
                                     <img src="/images/{{$sach->hinhanh}}" alt="">
                                     <div class="product-side-des">
-                                        <a href="#">{{$sach->ten}}</a>
+                                        <a href="{{route('trangchu.detail',['detail'=>$sach->id])}}">{{$sach->ten}}</a>
                                         <span class="product-side-des-author">{{$sach->tacgia}}</span>
                                         <div class="star-group">
                                             <i class="fa-solid fa-star"></i>
@@ -1260,7 +1168,7 @@ T7 - Chủ nhật: Quý khách vui lòng để lại tin nhắn qua email<a href
                                     <div class="product-side">
                                     <img src="/images/{{$sach->hinhanh}}" alt="">
                                     <div class="product-side-des">
-                                        <a href="#">{{$sach->ten}}</a>
+                                        <a href="{{route('trangchu.detail',['detail'=>$sach->id])}}">{{$sach->ten}}</a>
                                         <span class="product-side-des-author">{{$sach->tacgia}}</span>
                                         <div class="star-group">
                                             <i class="fa-solid fa-star"></i>
@@ -1276,24 +1184,6 @@ T7 - Chủ nhật: Quý khách vui lòng để lại tin nhắn qua email<a href
                                     </div>
                                 </div>
                                 @endforeach
-                                <div class="product-side">
-    <img src=".//images/224012_tho-peter-va-cac-ban-song-ngu.jpg" alt="">
-    <div class="product-side-des">
-        <a href="#"></a>
-        <span class="product-side-des-author">asdfasdfasd</span>
-        <div class="star-group">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-        </div>
-        <div class="product-side-price">
-            <span class="product-side-price-old">100.000 ₫</span>
-            <span class="product-side-price-new">100.000 ₫</span>
-        </div>
-    </div>
-</div>
                                 </div>
                             </div>
                             <div class="product-conten-right-link">
@@ -1519,7 +1409,7 @@ T7 - Chủ nhật: Quý khách vui lòng để lại tin nhắn qua email<a href
             </div>
             <div class="modal_body">
                 <div class="modal_inner">
-                    <div class="modal-header">
+                    <div class="modal-header" >
                         Đăng nhập
                         <div class="modal-close js-modal-close">
                             <span>X</span>
@@ -1556,7 +1446,7 @@ T7 - Chủ nhật: Quý khách vui lòng để lại tin nhắn qua email<a href
             </div>
         </div>
         <script src="asset/js/modal.js"></script>
-        <script src="asset/js/cart.js"></script>
+        <script src="/js/cart.js"></script>
         <script src="asset/js/trangchuproduct.js"></script>
     </div>
 </body>

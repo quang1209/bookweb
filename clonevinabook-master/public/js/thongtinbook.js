@@ -300,7 +300,7 @@ function handleonclick(bookIndex) {
      </div>
      <div class=" fiend-free">
      <span class="text-have-free">${book.free}</span>
-     </div>     
+     </div>
      `;
     }
 }

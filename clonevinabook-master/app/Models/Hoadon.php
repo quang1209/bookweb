@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class dichvu extends Model
+class Hoadon extends Model
 {
     use HasFactory;
-    protected $table = 'dichvu';
-    protected $primaryKey = 'id';
+    protected $table = 'hoadon';
+    protected $primaryKey = 'id_hoadon';
     public $timestamps = false;
     protected $connection = 'mysql';
-    protected $fillable = ['tendv','gia'];
+    protected $fillable = ['hovaten','sodiethoai','diachi','hinhthucthanhtoan','thanhtien','note'];
 }

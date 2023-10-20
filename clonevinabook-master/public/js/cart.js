@@ -3,7 +3,7 @@ var cart = document.querySelector('.cart-icon')
 function cartdrop(){
     document.querySelector('.header_cart-list').classList.toggle('drop')
     showgiohang()
-    
+
 }
 cart.addEventListener("click",cartdrop)
 window.onclick = function(event) {
@@ -43,7 +43,7 @@ giohang = new Array();
         giohang.push(sp)
     }
     showcountsp()
-    
+
  }
  function showcountsp(){
     if(giohang.length > 0){
@@ -90,13 +90,13 @@ giohang = new Array();
         '<div class="header_cart-list-item-total">'+
             'Tổng cộng: <span class="header_cart-list-item-total-price">'+tong+'.000đ</span>'+
         '</div>'+
-        
+
        ' <a href="" class="header_cart-list-item-add">XEM GIỎ HÀNG</a>'+
-        
+
       '</div>'
       document.getElementById('header_cart-list-item').innerHTML = ttgh
     }
-   
+
  }
  function xoasp(x){
     var xoa = x.parentElement.parentElement
@@ -107,7 +107,7 @@ giohang = new Array();
             giohang.splice(i,1)
         }
     }
- 
+
     showgiohang()
     showcountsp()
  }

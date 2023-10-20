@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\sach;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -59,4 +59,14 @@ class TrangchuController extends Controller
             ->get();
         return view('trangchu',['sachbanchay'=>$sachbanchay,'sachtrongtuan'=>$sachtrongtuan,'sachvh'=>$sachvh,'tapchi'=>$tapchi,'sachdaytre'=>$sachdaytre,'sachthieunhi'=>$sachthieunhi,'sachkynang'=>$sachkynang,'sachkinhte'=>$sachkinhte]);
     }
+    public function view($id){
+        $product = DB::table('sach')
+            ->leftJoin('nhaxb', 'sach.idnhaxb', '=', 'nhaxb.id')
+            ->leftJoin('theloai', 'sach.id_theloai', '=', 'theloai.id')
+            ->select('sach.*','nhaxb.name','theloai.theloai')
+            ->where('sach.id','=',$id)
+            ->first();
+        return view('detailpage',['product'=>$product]);
+    }
+    
 }
